@@ -26,7 +26,7 @@ void imprimirArreglo(int arreglo [], int tam) {
 void metodoIntercambio(int arreglo [], int tam) {
     int i,j,aux;
     for (i=0;i<=tam-1;i++) { //Va a ser para las pasadas, tiene control de indice fijo
-        for (j=1+1;j<tam;j++) { //Indice de comparracion
+        for (j=i+1;j<tam;j++) { //Indice de comparracion
             if (arreglo[i]>arreglo[j]) { //validar que el elemento de comparacion es mayor a nuestro indice fijo
                 aux = arreglo[j];
                 arreglo[j] = arreglo[i];
@@ -38,6 +38,31 @@ void metodoIntercambio(int arreglo [], int tam) {
     }
 }
 
+void metodoBurbuja(int arreglo [], int tam) {
+    int i,j,aux;
+    bool flag = true;
+    //Control de pasadas
+    for (i=0;i<tam&&flag;i++) {
+        flag = false;
+        for (j=0;j<tam-1-i;j++) {
+            if (arreglo[j+1]<arreglo[j]) {
+                aux = arreglo[j];
+                arreglo[j]=arreglo[j+1];
+                arreglo[j+1]=aux;
+                flag=true;
+            }
+        }
+    }
+}
+
+void metodoSeleccion(int arreglo [], int tam) { //TAREA
+    int i,j,aux;
+    for (i=0;i<=tam-1;i++) {
+    
+    }
+
+}
+
 int main(/*Parametros de entrada*/) {
     int tam;
     cout<<"Ingrese el tamaño del arreglo: ";
@@ -47,6 +72,16 @@ int main(/*Parametros de entrada*/) {
     //Generar arreglo aleatorio
     generarArreglo(arreglo,tam);
     //Imprimir arreglo
+    cout << "Areglo ORIGINAL" << endl;
+    imprimirArreglo(arreglo,tam);
+
+    //Imprimir arreglo ordenado
+    cout << "Metodo Intercambio" << endl;
+    metodoIntercambio(arreglo,tam);
     imprimirArreglo(arreglo,tam);
     //Metodos de ordenamiento
+
+    cout << "Metodo Burbuja" << endl;
+    metodoBurbuja(arreglo,tam);
+    imprimirArreglo(arreglo,tam);
 }
